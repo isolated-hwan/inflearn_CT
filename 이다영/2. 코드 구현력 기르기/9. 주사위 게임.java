@@ -28,7 +28,8 @@ public class Inflearn2_9 {
             } else if (dice.size() == 2) {
                 for (int x : dice.keySet()) {
                     if (dice.get(x) == 2) {
-                        price[i] = 1000 + dice.get(x) * 100;
+                        price[i] = 1000 + x * 100;
+                        break;
                     }
                 }
             } else {
