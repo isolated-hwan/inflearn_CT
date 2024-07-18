@@ -11,13 +11,14 @@ public class Inflearn2_6 {
         String[] num = br.readLine().split(" ");
 
         int origin = 0;
-        int reverse = 0;
+        int total = 0;
         for (int i = 0; i < n; i++) {
             int tmpOrg = Integer.parseInt(num[i]);
-            int tmpRvs = digit_sum(tmpOrg);
+            int tmpTot = digit_sum(tmpOrg);
 
-            if (tmpRvs > reverse) {
+            if (tmpTot > total) {
                 origin = tmpOrg;
+                total = tmpTot;
             }
         }
 
@@ -30,7 +31,6 @@ public class Inflearn2_6 {
             val += x % 10;
             x /= 10;
         }
-
         return val;
     }
 }
