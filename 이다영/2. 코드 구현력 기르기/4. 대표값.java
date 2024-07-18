@@ -3,50 +3,33 @@ package main.java.org.example.inflearn.sec02;
 import java.util.*;
 import java.io.*;
 
-// 대표값 (***)
-public class Inflearn2_4 {
+public class Inflearn2_3 {
+
+    // K번째 큰 수
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        String[] inLine = br.readLine().split(" ");
-        int[] score = new int[n];
-        int avg = 0;
 
+        String[] firstLine = br.readLine().split(" ");
+        int n = Integer.parseInt(firstLine[0]);
+        int k = Integer.parseInt(firstLine[1]);
+
+        String[] secondLine = br.readLine().split(" ");
+        int[] card = new int[n];
         for (int i = 0; i < n; i++) {
-            score[i] = Integer.parseInt(inLine[i]);
-            avg += score[i];
+            card[i] = Integer.parseInt(secondLine[i]);
         }
-        avg = (int) Math.round(avg * 1.0 / n);
 
-        int distance = 0;
-        int stdIdx = 0;
-        int stdVal = 0;
-        Boolean flag = true;
-        while (true) {
-            for (int i = 0; i < n; i++) {
-                if (score[i] - avg == distance) {
-                    if (score[i] > stdVal) {
-                        stdIdx = i;
-                        stdVal = score[i];
-                    }
-                    flag = false;
-                    break;
+        List<Integer> val = new ArrayList<>();
+        for (int x = 0; x < n; x++) {
+            for (int y = x+1; y < n; y++) {
+                for (int z = y+1; z < n; z++) {
+                    val.add(card[x] + card[y] + card[z]);
                 }
-                if (avg - score[i] == distance) {
-                    stdIdx = i;
-                    flag = false;
-                    break;
-                }
-            }
-
-            if (!flag) {
-                break;
-            } else {
-                distance++;
             }
         }
 
-        System.out.print(avg + " ");
-        System.out.print(stdIdx + 1);
+        Collections.sort(val, Comparator.reverseOrder());
+        System.out.print(val.get(k-1));
+
     }
 }
