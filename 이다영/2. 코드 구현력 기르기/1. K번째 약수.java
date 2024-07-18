@@ -1,4 +1,4 @@
-package main.java.org.example.inflearn;
+package main.java.org.example.inflearn.sec02;
 
 import java.util.*;
 
@@ -13,12 +13,16 @@ public class Inflearn2_1 {
         for (int i = 1; i < Math.sqrt(n+1); i++) {
             if (n % i == 0) {
                 num.add(i);
-                num.add(n/i);
+                if (n/i != i) {
+                    num.add(n/i);
+                }
             }
         }
 
-        if (num.size() > k) {
-            System.out.println(num.get(k));
+        Collections.sort(num);
+
+        if (num.size() >= k-1) {
+            System.out.println(num.get(k-1));
         } else {
             System.out.println(-1);
         }
