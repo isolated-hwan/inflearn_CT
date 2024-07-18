@@ -23,7 +23,10 @@ public class Inflearn2_3 {
         for (int x = 0; x < n; x++) {
             for (int y = x+1; y < n; y++) {
                 for (int z = y+1; z < n; z++) {
-                    val.add(card[x] + card[y] + card[z]);
+                    int total = card[x] + card[y] + card[z];
+                    if (!val.contains(total)) {
+                        val.add(total);
+                    }
                 }
             }
         }
