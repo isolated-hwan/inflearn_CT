@@ -16,18 +16,17 @@ public class Inflearn2_2 {
             int e = Integer.parseInt(st1.nextToken());
             int k = Integer.parseInt(st1.nextToken());
 
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
+            String[] arr = br.readLine().split(" ");
             int index = 0;
             List<Integer> num = new ArrayList<>();
-            for (int j = 1; j <= n; j++) {
-                index++;
-
-                if (s <= index && index <= e) {
-                    num.add(j);
+            for (int j = 0; j < n; j++) {
+                if (s <= index+1 && index+1 <= e) {
+                    num.add(Integer.parseInt(arr[index]));
                 }
+                index++;
             }
             Collections.sort(num);
-            System.out.println("#" + (i+1) + " " + num.get(k));
+            System.out.println("#" + (i+1) + " " + num.get(k-1));
         }
     }
 }
